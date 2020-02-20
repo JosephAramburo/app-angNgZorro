@@ -1,0 +1,51 @@
+/* .login-form {
+    max-width: 300px;
+} */
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+.topCardLogin{
+    margin-top: 70px !important;
+}
+
+img{
+    text-align: center !important;
+}
+
+.background-login{
+    /* background-position: top center; */
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 100%;
+    background: #000c17 !important;
+}
+
+/* @media (max-width:576px){
+    img{
+        margin-left: 12px !important;
+    }
+}
+
+
+@media (max-width: 768px){
+    img{
+        margin-left: 12px !important;
+    }
+}
+
+@media (max-width: 992px){
+    img{
+        margin-left: 52px !important;
+    }
+}
+@media (max-width: 1200px){
+    img{
+        margin-left: 84px !important;
+    }
+} */

@@ -1,0 +1,38 @@
+<div nz-row nzType="flex" class="background-login" nzJustify="center">
+    <!-- [nzXs]="{ span: 22, offset: 1 }" [nzSm]="{ span: 14, offset: 5 }" [nzMd]="{ span: 11, offset: 6 }" [nzLg]="{ span: 9, offset: 7 }" [nzXl]="{ span: 7, offset: 9 }" [nzXXl]="{ span: 13, offset: 9 }" -->
+    <div nz-col nzJustify="center" class="topCardLogin">
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+                <img src="../../../assets/logoAngular.png" height="240">
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input your username!">
+                <nz-input-group nzPrefixIcon="user" nzSize="large">
+                  <input type="text" nz-input formControlName="userName" placeholder="Username" autofocus/>
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate" nzSize="large">
+                  <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="Password"/>
+                </nz-input-group>
+                <ng-template #suffixTemplate>
+                    <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control>
+                <label nz-checkbox formControlName="remember">
+                  <span class="text-white">Remember me</span>
+                </label>
+                <a class="login-form-forgot" class="login-form-forgot text-white">Forgot password</a>
+                <button nz-button class="login-form-button" [nzType]="'primary'" nzSize="large">Log in</button>
+                <!-- Or
+                <a>register now!</a> -->
+              </nz-form-control>
+            </nz-form-item>
+        </form>
+    </div>
+</div>
