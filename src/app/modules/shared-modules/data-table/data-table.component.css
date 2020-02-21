@@ -1,0 +1,23 @@
+[nz-button] {
+    margin-right: 4px;
+}
+
+.table-operations {
+    margin-bottom: 16px;
+}
+
+.table-operations > button {
+    margin-right: 8px;
+}
+
+.rowTitle{
+    margin-bottom: 16px;
+}
+
+nz-select {
+    width: 100%;
+}
+
+.textTop{
+    vertical-align: top !important;
+}

@@ -1,0 +1,11 @@
+<app-data-table
+ [title]="resource?.title"
+ [pageIndex]="resource?.page"
+ [pageSize]="resource?.pageSize"
+ [total]="resource?.totalRecords"
+ [buttonsOptions]="resource?.buttonsOptions"
+ [headers]="resource?.structure.headers"
+ [data]="resource?.structure.body"
+ (filters)="filters($event)"
+ (clickButtons)="clickButtons($event)">
+</app-data-table>

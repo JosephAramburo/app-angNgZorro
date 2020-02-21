@@ -1,0 +1,63 @@
+<div nz-row class="rowTitle">
+    <div nz-col [nzXs]="{ span: 6 }" [nzSm]="{ span: 3}" [nzMd]="{ span: 2 }" [nzLg]="{ span: 2 }" [nzXl]="{ span: 14 }" [nzXXl]="{ span: 3 }">
+        <h4 nz-title>{{title}}</h4>
+    </div>
+    <div *ngIf="showBtnAdd" nz-col [nzXs]="{ span: 3, offset: 15 }" [nzSm]="{ span: 1, offset: 18}" [nzMd]="{ span: 2, offset: 19 }" [nzLg]="{ span: 2, offset: 19 }" [nzXl]="{ span: 2, offset: 7 }" [nzXXl]="{ span: 2, offset: 19 }">
+        <button nz-button class="btn-success" nzType="large" (click)="clickButton(-1,-1,true)"><i nz-icon nzType="plus"></i> Nuevo</button>
+    </div>
+</div>        
+
+<div nz-row>
+    <div nz-col [nzXs]="{ span: 24 }" [nzSm]="{ span: 24}" [nzMd]="{ span: 24 }" [nzLg]="{ span: 24 }" [nzXl]="{ span:24 }" [nzXXl]="{ span: 24 }">
+        <nz-table
+            #dataTable
+            nzShowSizeChanger
+            [nzFrontPagination]="false"
+            [nzData]="data"
+            [nzTotal]="total"
+            [(nzPageIndex)]="pageIndex"
+            [(nzPageSize)]="pageSize"
+            (nzPageIndexChange)="filtersData()"
+            (nzPageSizeChange)="filtersData()"
+            [nzSize]="tableSize">
+            <thead>
+                <tr>
+                    <th *ngFor="let row of headers" class="textTop">
+                        {{row.text}}
+                        <span *ngIf="row.isFilter">
+
+                            <nz-input-group [nzSuffix]="suffixTemplate" *ngIf="row.typeFilter == 0" [nzSize]="tableSize">
+                                <input nz-input placeholder="Buscar ..." [(ngModel)]="row.value" (ngModelChange)="filtersData()"/>
+                            </nz-input-group>
+                            <ng-template #suffixTemplate>
+                                <i nz-icon nz-tooltip class="ant-input-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="row.value !== ''" (click)="row.value = ''"></i>
+                            </ng-template>
+                            <br>
+                            <nz-select *ngIf="row.typeFilter == 1" [nzSize]="tableSize" [(ngModel)]="row.value" (ngModelChange)="filtersData()">
+                                <nz-option nzLabel="TODOS" [nzValue]="''"></nz-option>
+                                <nz-option *ngFor="let option of row.options" [nzLabel]="option.text" [nzValue]="option.value"></nz-option>
+                            </nz-select>                            
+                            <nz-date-picker *ngIf="row.typeFilter == 2" [nzSize]="tableSize" [(ngModel)]="row.value" (ngModelChange)="filtersData()"></nz-date-picker>                       
+                        </span>
+                    </th>
+                    <th *ngIf="buttonsOptions.length > 0" class="textTop"><span>Opciones</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of dataTable.data; let i = index">
+                    <td *ngFor="let itenH of headers">
+                        <span *ngIf="itenH.typeFilter == 1">
+                            {{ data[itenH.key] ? 'ACTIVO' : 'INACTIVO' }}
+                        </span>
+                        <span *ngIf="itenH.typeFilter != 1">
+                            {{ data[itenH.key] }}
+                        </span>
+                    </td>
+                    <td *ngIf="buttonsOptions.length > 0">
+                        <button *ngFor="let btn of buttonsOptions" nz-button [nzType]="btn.type" (click)="clickButton(btn.id, i)"><i nz-icon [nzType]="btn.icon"></i></button>                    
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

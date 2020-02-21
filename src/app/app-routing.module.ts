@@ -6,6 +6,7 @@ import { LoginComponent } from '@pages/login/login.component';
 import { HomeComponent } from '@pages/home/home.component';
 import { InitComponent } from '@pages/init/init.component';
 //MODULES
+import { CatalogsModule } from '@modules/catalogs/catalogs.module';
 // import { TodoModule } from '@modules/todo/todo.module';
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
           permission:'app-all'
         }
       },
+      {
+        path:'catalogs',
+        loadChildren:() => CatalogsModule
+      }
       // {
       //   path:'todo',
       //   loadChildren:() => TodoModule

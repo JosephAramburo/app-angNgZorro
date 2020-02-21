@@ -2,3 +2,8 @@
 .text-white{
     color: white !important;
 }
+
+.btn-success{
+    background: #52c41a !important;
+    color: white !important;
+}
